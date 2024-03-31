@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-          <div id="logo"><img src="./images/bloco.png" /></div>
+          <div id="logo"><img src="./images/blocoicon.png" /></div>
           <div id="display"></div>
           <div id="user"></div>
     </header>
@@ -20,7 +20,7 @@
         <div id="controls">
         <div id="add-note">
            <a href="" >
-              <i class="bi bi-plus-square-fill" style="font-size: 2rem;"></i>
+              <i class="bi bi-plus-square-fill" style="font-size: 2rem; color: #a40980;" ></i>
            </a>
        </div>
      </div>
@@ -29,7 +29,7 @@
      <div id="modal-view">
         <div id="close-modal-view">
            <a href="" >
-              <i class="bi bi-x-square" ></i>
+              <i class="bi bi-x-square" style="color:#a40980" ></i>
           </a>
        </div>
        <div id="title-note"> </div>
@@ -38,25 +38,25 @@
     </div>
 
     <div id="modal">
-      <div class="mb-3" style="border-bottom: 1px solid #999; display:flex; justify-content: space-between;">
+      <div class="mb-3" style="border-bottom: 1px solid #dd99d5; display:flex; justify-content: space-between;">
          <div>
-            <a href="" id="btn-save-note">
+            <a href="" id="btn-save-note" style="color:#a40980">
                <i class="bi bi-save" ></i>
             </a>
          </div>
        <div>
-         <a href="" style="color:#999" id="btn-close-modal">
+         <a href="" style="color:#a40980" id="btn-close-modal">
            <i class="bi bi-x-square" ></i>
          </a>
        </div>
      </div>
      <input type="hidden" id="input-id" >
      <div class="mb-3">
-       <label for="title" class="form-label">Title</label>
-       <input type="text" class="form-control" id="input-title" placeholder="Title">
+       <label for="title" class="form-label">Título</label>
+       <input type="text" class="form-control" id="input-title" placeholder="Insira um título para sua nota">
      </div>
      <div class="mb-3">
-       <label for="content" class="form-label">Notes</label>
+       <label for="content" class="form-label">Nota</label>
        <textarea class="form-control" id="input-content" rows="4"></textarea>
      </div>
 

@@ -1,68 +1,91 @@
 *{
-    margin:0;
-    padding:0;
+  margin:0;
+  padding:0;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+body {
+  background-image: url('../images/cutebg.jpg'); /* Ajuste o caminho conforme necessário */
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  border-bottom: 1px solid #dd99d5;
+  height: 10vh;
+  display:flex;
+}
+
+#logo {
+  width: 30vw;
+  height: 10vh;
+}
+
+#logo img {
+  height: 8vh;
+}
+
+#display {
+  width: 50vw;
+}
+
+#user {
+  width: 20vw;
+}
+
+main {
+  margin: 2vh 2vw;
+  min-height: 80vh;
+}
+
+#notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+#modal-view {
+  border:1px solid #dd99d5;
+  position: absolute;
+  display:none;
+  width: 90vw;
+  padding:10px;
+  background-color: #fdeff9;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#close-modal {
+  float:right;
+}
+
+#modal {
+  border:1px solid #dd99d5;
+  background-color: #fdeff9;
+  position: absolute;
+  padding:2vh 2vw;
+  display:none;
+  width: 90vw;
+}
+
+#controls-note {
+  display:flex;
+  gap:10px;
+}
+
+#edit-modal-view,
+#delete-modal-view {
+    display: inline-block; /* Para que fiquem em linha */
+    margin-right: 10px; /* Espaçamento entre os botões */
+}
+
+/* Media query para telas maiores */
+@media (min-width: 768px) {
+  header {
+      background-color: #fdeaec;
   }
-  
-  header{
-    border-bottom: 1px solid #1b85dc;
-    height: 10vh;
-    display:flex;
-  }
-  
-  #logo{
-    width: 30vw;
-    height: 10vh;
-  }
-  
-  #logo img{
-    height: 8vh;
-  }
-  #display{
-    width: 50vw;
-  }
-  
-  #user{
-    width: 20vw;
-  }
-  
-  main{
-    margin: 2vh 2vw;
-    min-height: 80vh;
-  }
-  
-  #notes{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .card a{
-    text-decoration: none;
-  }
-  
-  #modal-view{
-    border:1px solid #1b85dc;
-    position: absolute;
-    display:none;
-    width: 90vw;
-    padding:10px;
-   
-  }
-  
-  #close-modal{
-    float:right;
-  }
-  
-  #modal{
-    border:1px solid #1b85dc;
-    position: absolute;
-    padding:2vh 2vw;
-    display:none;
-    width: 90vw;
-  }
-  
-  #controls-note{
-    display:flex;
-    gap:10px;
-  }
-  
+}
