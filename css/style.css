@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url('../images/cutebg.jpg'); /* Ajuste o caminho conforme necessário */
+  background-image: url('../images/cutebg.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -79,11 +79,11 @@ main {
 
 #edit-modal-view,
 #delete-modal-view {
-    display: inline-block; /* Para que fiquem em linha */
-    margin-right: 10px; /* Espaçamento entre os botões */
+    display: inline-block;
+    margin-right: 10px;
 }
 
-/* Media query para telas maiores */
+/* telas maiores */
 @media (min-width: 768px) {
   header {
       background-color: #fdeaec;

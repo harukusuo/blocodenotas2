@@ -11,13 +11,15 @@ let btnSaveNote = document.querySelector("#btn-save-note"); //icone para salvar 
 let btnCloseNote = document.querySelector("#close-modal-view");//icone para fechar modal de edição de nota.
 let inputTitle = document.querySelector('#input-title'); // campo de entrada do título
 let inputContent = document.querySelector('#input-content'); // campo de entrada do conteúdo
+let deleteButton = document.querySelector('#delete-modal-view');
 
-/**
- * Modal de edição da anotação
- */
+/*deleteButton.addEventListener('click', (evt) => {
+    evt.preventDefault();
+
+}) */
+
 addNote.addEventListener('click', (evt) => {
     evt.preventDefault();
-    console.log('Botão de adicionar notas clicado.');
     modal.style.display='block';
     document.querySelector('#notes').style.display='none';
     document.querySelector('#controls').style.display='none';
@@ -65,13 +67,20 @@ btnCloseNote.addEventListener('click', (evt) => {
 
 const saveNote = (note) => {
     let notes = loadNotes();
+    note.lastTime = new Date().getTime(); //add em aula
     if (note.id.trim().length < 1) {
         note.id = new Date().getTime();
-    } else {
-        // ???
+        notes.push(note); //add em aula
+        document.querySelector('#input-id').value = note.id; //add em aula
+    } else { //add em aula
+        notes.forEach((item, i) => {
+            if (item.id == note.id) {
+                notes[i] = note;
+            }
+        });
     }
-    note.lastTime = new Date().getTime();
-    notes.push(note);
+    //note.lastTime = new Date().getTime(); --mudou de lugar
+    //notes.push(note); --mudou de lugar
     notes = JSON.stringify(notes);
     localStorage.setItem('notes', notes);
 };
@@ -127,8 +136,20 @@ const showNote = (note) => {
     document.querySelector('#content-note').innerHTML = 
         `<p>${note.content}</p>
         <p>Última alteração: ${dateFormat(note.lastTime)}</p>`;
+        
+        /*let divEdit = document.createElement("div");
+        let iEdit = document.createElement("i");
+        iEdit.closeNote = "bi bi-pen";
+        divEdit.appendChild(iEdit);
+        document.querySelector("#controls-note").appendChild(divEdit);
+        divEdit.addEventListener("click",(evt) =>{
+            evt.preventDefault();
+            document.querySelector("#input-id").value = note.id;
+        })
 
-    // Criar o botão de editar nota
+    };*/
+    
+    // botão de editar nota
     let editButton = document.createElement('div');
     editButton.id = 'edit-modal-view';
     editButton.innerHTML = `
@@ -136,7 +157,7 @@ const showNote = (note) => {
             <i class="bi bi-pen" style="color:#a40980"></i>
         </a>`;
 
-    // Criar o botão de excluir nota
+    // botão de excluir nota
     let deleteButton = document.createElement('div');
     deleteButton.id = 'delete-modal-view';
     deleteButton.innerHTML = `
@@ -144,10 +165,14 @@ const showNote = (note) => {
             <i class="bi bi-trash3" style="color:#a40980"></i>
         </a>`;
 
-    // Adicionar os botões ao modalView
+    // adiciona os botões
     modalView.appendChild(editButton);
     modalView.appendChild(deleteButton);
 };
+
+/*const deleteButton = (note) => {
+
+};*/
 
 const dateFormat = (timestamp) => {
     let date = new Date(timestamp);
