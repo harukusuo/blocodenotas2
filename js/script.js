@@ -11,12 +11,6 @@ let btnSaveNote = document.querySelector("#btn-save-note"); //icone para salvar 
 let btnCloseNote = document.querySelector("#close-modal-view");//icone para fechar modal de edição de nota.
 let inputTitle = document.querySelector('#input-title'); // campo de entrada do título
 let inputContent = document.querySelector('#input-content'); // campo de entrada do conteúdo
-let deleteButton = document.querySelector('#delete-modal-view');
-
-/*deleteButton.addEventListener('click', (evt) => {
-    evt.preventDefault();
-
-}) */
 
 addNote.addEventListener('click', (evt) => {
     evt.preventDefault();
@@ -173,6 +167,10 @@ const showNote = (note) => {
 /*const deleteButton = (note) => {
 
 };*/
+
+let editButton = (evt) => {
+    evt.preventDefault();
+}
 
 const dateFormat = (timestamp) => {
     let date = new Date(timestamp);
