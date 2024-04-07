@@ -17,6 +17,7 @@ addNote.addEventListener('click', (evt) => {
     modal.style.display='block';
     document.querySelector('#notes').style.display='none';
     document.querySelector('#controls').style.display='none';
+    document.querySelector('#input-id').value = '';
 });
 
 btnCloseModal.addEventListener('click', (evt) => {
@@ -132,25 +133,29 @@ const showNote = (note) => {
         <p>Última alteração: ${dateFormat(note.lastTime)}</p>`;
         
     // botão de editar nota
-    if (!document.querySelector('#edit-modal-view')) {
-        let editButton = document.createElement('div');
+    let editButton = document.querySelector('#edit-modal-view'); // try to find the edit button
+    if (!editButton) { // if the button does not exist, create it
+        editButton = document.createElement('div');
         editButton.id = 'edit-modal-view';
-        editButton.innerHTML = `
-            <a href="#" onclick="editNote('${note.id}')">
-                <i class="bi bi-pen" style="color:#a40980"></i>
-            </a>`;
         modalView.appendChild(editButton);
     }
+    // set the button content to open the correct note
+    editButton.innerHTML = `
+        <a href="#" onclick="editNote(${note.id})">
+            <i class="bi bi-pen" style="color:#a40980"></i>
+        </a>`;
     // botão de excluir nota
-    if (!document.querySelector('#delete-modal-view')) {
-        let deleteButton = document.createElement('div');
+    // same as the edit button
+    let deleteButton = document.querySelector('#delete-modal-view');
+    if (!deleteButton) {
+        deleteButton = document.createElement('div');
         deleteButton.id = 'delete-modal-view';
-        deleteButton.innerHTML = `
-            <a href="#" onclick="deleteNote('${note.id}')">
-                <i class="bi bi-trash3" style="color:#a40980"></i>
-            </a>`;
         modalView.appendChild(deleteButton);
     }
+    deleteButton.innerHTML = `
+        <a href="#" onclick="deleteNote('${note.id}')">
+            <i class="bi bi-trash3" style="color:#a40980"></i>
+        </a>`;
 };
 
 //função que edita a nota
@@ -174,14 +179,14 @@ const editNote = (id) => {
 const deleteNote = (id) => {
 
     let notes = loadNotes();
-
     notes = notes.filter(note => note.id != id);
-
     localStorage.setItem('notes', JSON.stringify(notes));
 
     listNotes();
 
     notesContainer.style.display = 'flex';
+    modalView.style.display = 'none';
+    addNote.style.display = 'block';
 };
 
 const dateFormat = (timestamp) => {
