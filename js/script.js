@@ -133,19 +133,18 @@ const showNote = (note) => {
         <p>Última alteração: ${dateFormat(note.lastTime)}</p>`;
         
     // botão de editar nota
-    let editButton = document.querySelector('#edit-modal-view'); // try to find the edit button
-    if (!editButton) { // if the button does not exist, create it
+    let editButton = document.querySelector('#edit-modal-view');
+    if (!editButton) {
         editButton = document.createElement('div');
         editButton.id = 'edit-modal-view';
         modalView.appendChild(editButton);
     }
-    // set the button content to open the correct note
+   
     editButton.innerHTML = `
         <a href="#" onclick="editNote(${note.id})">
             <i class="bi bi-pen" style="color:#a40980"></i>
         </a>`;
     // botão de excluir nota
-    // same as the edit button
     let deleteButton = document.querySelector('#delete-modal-view');
     if (!deleteButton) {
         deleteButton = document.createElement('div');
